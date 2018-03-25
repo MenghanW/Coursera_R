@@ -23,7 +23,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## Write a short comment describing this function
 ## This function tests a matrix returned by the former function whether 
 
-cacheInv <- function(x, ...) {
+cacheSolve <- function(x, ...) {
         ## Retrieve the inverse
         inv <- x$getinv()
         ## Check whether the inverse is NULL, if not, it can be returned to the parent environment
@@ -33,7 +33,7 @@ cacheInv <- function(x, ...) {
         }
         ## Get and set the inverse of the input data
         data <- x$get()
-        inv <- inv(data,...)
+        inv <- solve(data,...)
         x$setinv(inv)
         inv
 }
