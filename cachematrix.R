@@ -6,6 +6,7 @@
 ## The following function creates an object to obtain the inversed matrix.
 
 makeCacheMatrix <- function(x = matrix()) {
+	## initialize the object inv to store reversed matrix later
 	inv <- NULL
 	set <- function(y){
 		x <<- y
@@ -14,8 +15,8 @@ makeCacheMatrix <- function(x = matrix()) {
 	get <- function() x
 	setinv <- function(inverse)inv <<- inverse
 	getinv <- function () inv
-	list(set = set, get = get, setinv = setinv, getinv = getinv)
-
+	## Create new object by returning a list to parent environment
+	list(set = set, get = get, setinv = setinv, getinv = getinv) 
 }
 
 
@@ -23,12 +24,14 @@ makeCacheMatrix <- function(x = matrix()) {
 ## This function tests a matrix returned by the former function whether 
 
 cacheInv <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+        ## Retrieve the inverse
         inv <- x$getinv()
+        ## Check whether the inverse is NULL, if not, it can be returned to the parent environment
         if(!is.null(inv)) {
         	message("getting cached data")
         	return(inv)
         }
+        ## Get and set the inverse of the input data
         data <- x$get()
         inv <- inv(data,...)
         x$setinv(inv)
