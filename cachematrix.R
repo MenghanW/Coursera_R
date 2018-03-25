@@ -24,7 +24,8 @@ makeCacheMatrix <- function(x = matrix()) {
 ## This function tests a matrix returned by the former function whether 
 
 cacheSolve <- function(x, ...) {
-        ## Retrieve the inverse
+        ## Return a matrix that is the inverse of 'x'
+          ## Retrieve the inverse
         inv <- x$getinv()
         ## Check whether the inverse is NULL, if not, it can be returned to the parent environment
         if(!is.null(inv)) {
